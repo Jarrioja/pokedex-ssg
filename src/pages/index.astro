@@ -2,17 +2,18 @@
 import type { PokemonListResponse } from '../interfaces/pokemon-list-response'
 import MainLayout from '@layouts/MainLayout.astro'
 import PokemonCard from '@components/pokemons/PokemonCard.astro'
+import Title from '@components/shared/Title.astro'
 const title = 'Pokemon SSG | Home'
 const resp = await fetch('https://pokeapi.co/api/v2/pokemon/')
 const data = (await resp.json()) as PokemonListResponse
 ---
 
 <MainLayout title={title}>
-  <h1 class='text-3xl mb-4'>Listado de Pokemons</h1>
+  <Title>Listado</Title>
 
   <section
     aria-label='Listado de Pokemons'
-    class='grid grid-cols-1 gap-4 sm:grid-cols-4 md:grid-cols-5'
+    class='grid grid-cols-1 gap-4 sm:grid-cols-4 md:grid-cols-5 mt-5'
   >
     {
       data.results.map(({ name, url }) => {
